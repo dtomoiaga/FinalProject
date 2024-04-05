@@ -1,4 +1,5 @@
 package pageObjects;
+import lombok.Getter;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -10,7 +11,8 @@ public class HomePage extends BasePage{
     WebElement cartButton;
     @FindBy(id= "_desktop_user_info")
     WebElement signInButton;
-    @FindBy(id= "_desktop_user_info")
+    @Getter
+    @FindBy(xpath = "//*[@id=\"_desktop_user_info\"]/div/a[1]")
     WebElement signOutButton;
     @FindBy(xpath = "//*[@id=\"content\"]/section[1]/a")
     WebElement allProductsButton;

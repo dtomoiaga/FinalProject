@@ -1,6 +1,5 @@
 package pageObjects;
-import com.fasterxml.jackson.databind.ser.Serializers;
-import org.openqa.selenium.By;
+import lombok.Getter;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -17,6 +16,9 @@ public class LoginPage extends BasePage {
     WebElement emailField;
     @FindBy(id= "field-password")
     WebElement passwordField;
+
+    @FindBy(xpath = "//*[@id=\"content\"]/section/div/ul/li")
+    WebElement authenticationErrorMessage;
 
     public void login(String username, String password) {
         System.out.println("Enter username:" + username);
@@ -54,4 +56,8 @@ public class LoginPage extends BasePage {
     public void enterPassword(String password) {
         passwordField.sendKeys(password);
     }
+
+    //create method de get error string ca sa iau error message
+    public String getAuthenticationErrorMessage(){ return authenticationErrorMessage.getText(); }
+
 }

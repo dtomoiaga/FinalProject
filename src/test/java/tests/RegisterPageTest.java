@@ -1,17 +1,24 @@
 package tests;
 
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import pageObjects.*;
 
 public class RegisterPageTest extends BaseTest {
+    @DataProvider(name = "registerScenarios")
+        public Object[][] dataProviderForRegisterScenarios() {
+            return new Object[][]{
+                    // firstName | lastName | email | password
+                    {"Daniel", "Tomoiaga", "email@email.com", "Scoalainformala"},
+            };
+    }
 
-    @Test(description = "Register Scenario")
-    public void registerScenario() {
+    @Test(dataProvider = "registerScenarios")
+    public void registerScenarios(String firstName, String lastName, String email, String password) {
 
-        // Navigate to the Sign In page
+        // Navigate to the Sign-In page
         HomePage homePage = new HomePage(driver);
         homePage.clickSignInButton();
-
 
         // Navigate to the Create Account page
         LoginPage loginPage = new LoginPage(driver);
@@ -20,9 +27,10 @@ public class RegisterPageTest extends BaseTest {
         // Fill in the registration form
         RegisterPage registerPage = new RegisterPage(driver);
         registerPage.clickMrRadioButton();
-        //insert methods for First name and Last name created in CreateAccountPage
-        registerPage.enterEmail("a@a.com");
-        registerPage.enterPassword("Scoalainformala");
+        registerPage.enterFirstName(firstName);
+        registerPage.enterLastName(lastName);
+        registerPage.enterEmail(email);
+        registerPage.enterPassword(password);
         registerPage.clickCheckboxes();
         registerPage.clickSaveButton();
     }
