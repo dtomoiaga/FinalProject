@@ -22,6 +22,8 @@ public class WishlistPage extends BasePage{
    WebElement createWishlistButton;
    @FindBy(xpath = "//*[@id=\"content\"]/div/ul/li[2]/a/p")
    WebElement newWishlistText;
+   @FindBy(xpath = "//*[@id=\"content\"]/ul/li/div/a/div[2]/p[1]")
+   WebElement hummingbirdTshirtText;
 
     // Constructor
     public WishlistPage(WebDriver driver) {
@@ -50,4 +52,7 @@ public class WishlistPage extends BasePage{
 
     // Get the text from the newly created wishlist
     public String getWishlistText() { return newWishlistText.getText(); }
+
+    // Get the text from the Hummingbird T-shirt item
+    public String getHummingbirdTShirtText(){ return hummingbirdTshirtText.getText(); }
 }

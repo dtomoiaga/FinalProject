@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="All tests from testNG course">
-    <test name="Regression">
+<suite name="Final Project tests">
+    <test name="LoginTests">
+        <classes>
+            <class name="tests.LoginPageTest"/>
+        </classes>
+    </test>
+    <test name="Smoke">
         <classes>
         </classes>
-    </test> <!-- Test -->
-</suite> <!-- Suite -->
+    </test>
+</suite>

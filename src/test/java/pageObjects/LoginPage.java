@@ -1,5 +1,4 @@
 package pageObjects;
-import lombok.Getter;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -21,10 +20,14 @@ public class LoginPage extends BasePage {
     WebElement authenticationErrorMessage;
 
     public void login(String username, String password) {
-        System.out.println("Enter username:" + username);
         enterEmail(username);
-        System.out.println("Enter password:" + password);
         enterPassword(password);
+        clickSignInButton();
+    }
+
+    public void login(){
+        enterEmail("a@a.com");
+        enterPassword("Scoalainformala");
         clickSignInButton();
     }
 

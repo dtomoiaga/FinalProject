@@ -1,74 +1,27 @@
 package objectModels;
 
+import lombok.Getter;
+import lombok.Setter;
 
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-
-@XmlRootElement
+@Setter
+@Getter
 public class LoginModel {
-    private AccountModel account;
-
-    private String usernameErr;
-    private String passwordErr;
-    private String generalErr;
+    private String username;
+    private String password;
 
     public LoginModel() {
-
     }
 
-    public LoginModel(String username, String password, String usernameErr, String passwordErr, String generalErr) {
-        this.account = new AccountModel();
-        this.account.setPassword(password);
-        this.account.setUsername(username);
-
-        //set current elements
-        this.generalErr = generalErr;
-        this.passwordErr = passwordErr;
-        this.usernameErr = usernameErr;
-    }
-
-    public AccountModel getAccount() {
-        return account;
-    }
-
-    @XmlElement
-    public void setAccount(AccountModel account) {
-        this.account = account;
-    }
-
-    public String getUsernameErr() {
-        return usernameErr;
-    }
-
-    @XmlElement
-    public void setUsernameErr(String usernameErr) {
-        this.usernameErr = usernameErr;
-    }
-
-    public String getPasswordErr() {
-        return passwordErr;
-    }
-
-    @XmlElement
-    public void setPasswordErr(String passwordErr) {
-        this.passwordErr = passwordErr;
-    }
-
-    public String getGeneralErr() {
-        return generalErr;
-    }
-    @XmlElement
-    public void setGeneralErr(String generalErr) {
-        this.generalErr = generalErr;
+    public LoginModel(String username, String password) {
+        this.username = username;
+        this.password = password;
     }
 
     @Override
     public String toString() {
         return "LoginModel{" +
-                "account={username:" + account.getUsername() + ",password=" + account.getPassword() +
-                "}, usernameErr='" + usernameErr + '\'' +
-                ", passwordErr='" + passwordErr + '\'' +
-                ", generalErr='" + generalErr + '\'' +
+                "username='" + username + '\'' +
+                ", password='" + password + '\'' +
                 '}';
     }
 }

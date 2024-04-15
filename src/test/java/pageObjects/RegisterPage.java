@@ -24,7 +24,7 @@ public class RegisterPage extends BasePage{
     WebElement passwordField;
     private By checkboxesLocator = By.xpath("//input[@type='checkbox']");
 
-    // Register method
+    // Register methods
     public void register(String title, String firstName, String lastName, String email, String password){
         if(title == "Mr"){
             clickMrRadioButton();
@@ -35,6 +35,16 @@ public class RegisterPage extends BasePage{
         enterLastName(lastName);
         enterEmail(email);
         enterPassword(password);
+        clickCheckboxes();
+        clickSaveButton();
+    }
+
+    public void register(){
+        clickMrRadioButton();
+        enterFirstName("Tomoiaga");
+        enterLastName("Daniel");
+        enterEmail("a@a.com");
+        enterPassword("Scoalainformala");
         clickCheckboxes();
         clickSaveButton();
     }
@@ -84,9 +94,7 @@ public class RegisterPage extends BasePage{
     }
 
     // Enter email
-    public void enterEmail(String email) {
-        emailField.sendKeys(email);
-    }
+    public void enterEmail(String email) { emailField.sendKeys(email); }
 
     // Enter password
     public void enterPassword(String password) {

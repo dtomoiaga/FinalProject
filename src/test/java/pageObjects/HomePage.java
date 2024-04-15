@@ -20,6 +20,11 @@ public class HomePage extends BasePage{
     WebElement wishlistButton;
     @FindBy(xpath = "//*[@id=\"footer_account_list\"]/li[3]/a")
     WebElement ordersButton;
+    @FindBy(xpath = "//*[@id=\"content\"]/section[1]/div/div[1]/article/div/button/i")
+    WebElement articleOneWishlistButton;
+    @FindBy(xpath = "//*[@id=\"content\"]/section[1]/div/div[1]/article/div/div[2]/h3/a")
+    WebElement hummingbirdTShirt;
+
 
     // Constructor
     public HomePage(WebDriver driver) {
@@ -62,4 +67,15 @@ public class HomePage extends BasePage{
     public void clickOrdersButton() {
         ordersButton.click();
     }
+
+    // Click on "Add article 1 to wishlist" button
+    public void clickArticleOneWishlistButton() {
+        articleOneWishlistButton.click();
+    }
+
+    // Get the text from the newly created wishlist
+    public String getHummingbirdTShirtText() { return hummingbirdTShirt.getText(); }
+
+
+
 }

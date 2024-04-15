@@ -1,22 +1,29 @@
 package tests;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.*;
+import org.testng.Reporter;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
+import pageObjects.HomePage;
+import pageObjects.LoginPage;
+import pageObjects.RegisterPage;
 import utils.BrowserUtils;
+import utils.ConstantUtils;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 public class BaseTest {
     protected WebDriver driver;
+    private int screenshotIndex = 0;
     protected String baseUrl = "https://demo.prestashop.com";
 
     protected void navigateToHomePage() {
         driver.get(baseUrl);
     }
-    @BeforeMethod
+    @BeforeTest
     public void setUp() {
         // Initialize WebDriver based on browser name
         String browserName = "chrome"; // Default browser
@@ -33,12 +40,71 @@ public class BaseTest {
         driver.switchTo().frame(iframe);
     }
 
-    @AfterMethod
-    public void tearDown() {
+
+    public void closeBrowserAtEnd() {
         // Close WebDriver instance
         if (driver != null) {
+            System.out.println("The browser was closed");
             driver.quit();
         }
+    }
+
+    @AfterTest
+    public void cleanupAfterTest(){ closeBrowserAtEnd(); }
+
+    protected void takeScreenshot() {
+        File screenshotFile = ((TakesScreenshot) driver)
+                .getScreenshotAs(OutputType.FILE);
+        final String fileName = ConstantUtils.SCREENSHOT_FILE +
+                screenshotIndex + ".png";
+        File finalFile =
+                new File(fileName);
+        try {
+            FileUtils.copyFile(screenshotFile, finalFile);
+            Reporter.log("<img src='screenshot" +
+                    screenshotIndex + ".png' width='400' height='400'>");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        screenshotIndex++;
+    }
+
+    public void register(){
+        // Navigate to the Sign-In page
+        HomePage homePage = new HomePage(driver);
+        homePage.clickSignInButton();
+
+        // Navigate to the Create Account page
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.clickCreateAccountButton();
+
+        // Register an account
+        RegisterPage registerPage = new RegisterPage(driver);
+        registerPage.register();
+    }
+
+    public void login(){
+        // Navigate to the Sign-In page
+        HomePage homePage = new HomePage(driver);
+        homePage.clickSignInButton();
+
+        // Navigate to the Create Account page
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.clickCreateAccountButton();
+
+        // Register an account
+        RegisterPage registerPage = new RegisterPage(driver);
+        registerPage.register("Mr", "Daniel", "Tomoiaga", "a@a.com", "Scoalainformala");
+
+        // After registering an account, log out
+        homePage.clickSignOutButton();
+
+        // Navigate to the Sign-In page
+        homePage.clickSignInButton();
+
+        // Click the SignIn button and input login details
+        loginPage.login("a@a.com", "Scoalainformala");
+
     }
 }
 
