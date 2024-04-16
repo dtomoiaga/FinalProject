@@ -67,8 +67,6 @@ public class AllProductsPage extends BasePage{
     WebElement filterByDotted;
     @FindBy(xpath = "//*[@id=\"js-product-list\"]/div[1]/div[1]/article/div/div[2]/h2/a")
     WebElement hummingBirdTshirt;
-    @FindBy(xpath = "//*[@id=\"add-to-cart-or-refresh\"]/div[2]/div/div[2]/button")
-    WebElement hummingBirdTshirtCartButton;
 
 
     // Constructor
@@ -200,8 +198,5 @@ public class AllProductsPage extends BasePage{
 
     // Click on the HummingBird T-shirt product
     public void clickHummingBirdTshirt() { hummingBirdTshirt.click(); }
-
-    // Click on the Add to cart button from the HummingBird T-shirt product page
-    public void clickHummingBirdTshirtCartButton() { hummingBirdTshirtCartButton.click(); }
 }
 

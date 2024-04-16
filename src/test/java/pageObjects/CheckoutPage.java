@@ -1,13 +1,11 @@
 package pageObjects;
-import org.openqa.selenium.By;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class CheckoutPage extends BasePage{
-
-    // to find out if it's possible to leave all the sections in one place or separate them
 
     // Locators for the Addresses section of the checkout
     @FindBy(id= "field-alias")

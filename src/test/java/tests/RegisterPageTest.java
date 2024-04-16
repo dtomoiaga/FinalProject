@@ -5,6 +5,7 @@ import objectModels.RegistrationModel;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import pageObjects.*;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -28,7 +29,7 @@ public class RegisterPageTest extends BaseTest {
     }
 
 
-    @Test(dataProvider = "jsonDP")
+    @Test(dataProvider = "jsonDP", description = "Register an account using data from a json file")
     public void registerUsingStaticData(RegistrationModel registrationModel) {
         try {
             // Navigate to the Sign-In page

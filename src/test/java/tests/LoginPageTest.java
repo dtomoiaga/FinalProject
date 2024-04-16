@@ -1,6 +1,5 @@
 package tests;
 
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import org.testng.Assert;
 import pageObjects.HomePage;
@@ -9,24 +8,13 @@ import dataProviders.DBDataProviders;
 
 public class LoginPageTest extends BaseTest {
 
-    @BeforeTest
-    public void registerAccount() {
-        // Navigate to the registration page
-        HomePage homePage = new HomePage(driver);
-        homePage.clickSignInButton();
-        LoginPage loginPage = new LoginPage(driver);
-        loginPage.clickCreateAccountButton();
-
-        // Register an account
-        register();
-
-        // After registering an account, log out
-        homePage.clickSignOutButton();
-    }
-
-    @Test(dataProvider = "login_errors_sql", dataProviderClass = DBDataProviders.class)
+    @Test(dataProvider = "login_errors_sql", dataProviderClass = DBDataProviders.class, description = "Login using data from DB")
     public void loginUsingDataFromDB(String username, String password, String authenticationErrorMessage) {
         try {
+            // Register an account and sign out
+            register();
+            homePage.clickSignOutButton();
+
             // Navigate to the Sign-In page
             HomePage homePage = new HomePage(driver);
             homePage.clickSignInButton();

@@ -1,13 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Final Project tests">
-    <test name="LoginTests">
+    <test name="Smoke tests">
         <classes>
-            <class name="tests.LoginPageTest"/>
+            <class name="tests.RegisterPageTest"></class>
+            <class name="tests.LoginPageTest"></class>
+            <class name="tests.WishlistPageTest">
+                <methods>
+                    <include name="addToWishlistSignedIn"/>
+                </methods>
+            </class>
+            <class name="tests.ShoppingCartPageTest">
+                <methods>
+                    <include name="addProductToCart"/>
+                </methods>
+            </class>
         </classes>
     </test>
-    <test name="Smoke">
+    <test name="Regression tests">
         <classes>
+            <class name="tests.RegisterPageTest"></class>
+            <class name="tests.LoginPageTest"></class>
+            <class name="tests.WishlistPageTest"></class>
+            <class name="tests.ShoppingCartPageTest"></class>
+        </classes>
+    </test>
+    <test name="Register test">
+        <classes>
+            <class name="tests.RegisterPageTest"></class>
         </classes>
     </test>
 </suite>

@@ -19,14 +19,20 @@ public class BaseTest {
     protected WebDriver driver;
     private int screenshotIndex = 0;
     protected String baseUrl = "https://demo.prestashop.com";
+    HomePage homePage;
+    LoginPage loginPage;
+    RegisterPage registerPage;
 
     protected void navigateToHomePage() {
         driver.get(baseUrl);
     }
+
+
+
     @BeforeTest
     public void setUp() {
         // Initialize WebDriver based on browser name
-        String browserName = "chrome"; // Default browser
+        String browserName = System.getProperty("browser", "chrome"); // Default browser is Chrome
         driver = BrowserUtils.setUpBrowser(browserName);
 
         // Set up implicit wait and maximize window
@@ -50,7 +56,9 @@ public class BaseTest {
     }
 
     @AfterTest
-    public void cleanupAfterTest(){ closeBrowserAtEnd(); }
+    public void cleanupAfterTest() {
+        closeBrowserAtEnd();
+    }
 
     protected void takeScreenshot() {
         File screenshotFile = ((TakesScreenshot) driver)
@@ -69,42 +77,18 @@ public class BaseTest {
         screenshotIndex++;
     }
 
-    public void register(){
+    public void register() {
         // Navigate to the Sign-In page
-        HomePage homePage = new HomePage(driver);
+        homePage = new HomePage(driver);
         homePage.clickSignInButton();
 
         // Navigate to the Create Account page
-        LoginPage loginPage = new LoginPage(driver);
+        loginPage = new LoginPage(driver);
         loginPage.clickCreateAccountButton();
 
         // Register an account
-        RegisterPage registerPage = new RegisterPage(driver);
+        registerPage = new RegisterPage(driver);
         registerPage.register();
-    }
-
-    public void login(){
-        // Navigate to the Sign-In page
-        HomePage homePage = new HomePage(driver);
-        homePage.clickSignInButton();
-
-        // Navigate to the Create Account page
-        LoginPage loginPage = new LoginPage(driver);
-        loginPage.clickCreateAccountButton();
-
-        // Register an account
-        RegisterPage registerPage = new RegisterPage(driver);
-        registerPage.register("Mr", "Daniel", "Tomoiaga", "a@a.com", "Scoalainformala");
-
-        // After registering an account, log out
-        homePage.clickSignOutButton();
-
-        // Navigate to the Sign-In page
-        homePage.clickSignInButton();
-
-        // Click the SignIn button and input login details
-        loginPage.login("a@a.com", "Scoalainformala");
-
     }
 }
 
