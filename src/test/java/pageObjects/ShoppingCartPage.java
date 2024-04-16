@@ -12,6 +12,10 @@ public class ShoppingCartPage extends BasePage{
     WebElement proceedToCheckoutButton;
     @FindBy(className = "cart-line-product-actions")
     WebElement deleteFromCart;
+    @FindBy(xpath = "//*[@id=\"main\"]/div/div[1]/div/div[1]/h1")
+    WebElement shoppingCartTitle;
+    @FindBy(xpath = "//*[@id=\"main\"]/div/div[1]/div/div[2]/ul/li/div/div[2]/div[1]/a")
+    WebElement hummingBirdTshirt;
 
     // Constructor
     public ShoppingCartPage(WebDriver driver) {
@@ -31,4 +35,10 @@ public class ShoppingCartPage extends BasePage{
     public void clickDeleteFromCart(){
         deleteFromCart.click();
     }
+
+    // Get the text from the newly created wishlist
+    public String getShoppingCartTitleText() { return shoppingCartTitle.getText(); }
+
+    // Get the text from the HummingBird T-shirt product
+    public String getHummingBirdText() { return hummingBirdTshirt.getText(); }
 }

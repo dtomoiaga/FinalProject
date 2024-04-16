@@ -65,9 +65,11 @@ public class AllProductsPage extends BasePage{
     WebElement filterBySquarred;
     @FindBy(xpath = "//*[@id=\"facet_27071\"]/li[4]/label")
     WebElement filterByDotted;
+    @FindBy(xpath = "//*[@id=\"js-product-list\"]/div[1]/div[1]/article/div/div[2]/h2/a")
+    WebElement hummingBirdTshirt;
+    @FindBy(xpath = "//*[@id=\"add-to-cart-or-refresh\"]/div[2]/div/div[2]/button")
+    WebElement hummingBirdTshirtCartButton;
 
-    // insert here the locator(s) for the add to wishlist button
-    // the problem is that every product has one
 
     // Constructor
     public AllProductsPage(WebDriver driver) {
@@ -196,7 +198,10 @@ public class AllProductsPage extends BasePage{
         filterByDotted.click();
     }
 
-    // Click on "Add to wishlist" button for a specific product
-   // create method to click on the add to wishlist button after you solve the locators problem for it
+    // Click on the HummingBird T-shirt product
+    public void clickHummingBirdTshirt() { hummingBirdTshirt.click(); }
+
+    // Click on the Add to cart button from the HummingBird T-shirt product page
+    public void clickHummingBirdTshirtCartButton() { hummingBirdTshirtCartButton.click(); }
 }
 
