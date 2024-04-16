@@ -9,7 +9,7 @@ public class WishlistPageTest extends BaseTest {
     @Test(description = "Create a new wishlist")
     public void createNewWishlist() {
         try {
-            // Precondition: Account registration is needed before each test that requires a login
+            // Precondition: Account registration is needed
 
             // Register an account
             register();
@@ -69,6 +69,8 @@ public class WishlistPageTest extends BaseTest {
     @Test(description = "Add to wishlist - signed in")
     public void addToWishlistSignedIn() {
         try {
+            // Precondition: Account registration is needed
+
             // Register an account and login
             register();
 

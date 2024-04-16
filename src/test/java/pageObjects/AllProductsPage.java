@@ -7,11 +7,11 @@ import org.openqa.selenium.support.PageFactory;
 public class AllProductsPage extends BasePage{
 
     // Locators
-    @FindBy(xpath = "//*[@id=\"facet_57328\"]/li[1]/label")
+    @FindBy(xpath = "//*[@id=\"facet_43592\"]/li[1]/label/a/text()")
     WebElement filterByAccessories;
-    @FindBy(xpath = "//*[@id=\"facet_57328\"]/li[2]/label")
+    @FindBy(xpath = "//*[@id=\"facet_27530\"]/li[2]/label/a")
     WebElement filterByArt;
-    @FindBy(xpath = "//*[@id=\"facet_57328\"]/li[3]/label")
+    @FindBy(xpath = "//*[@id=\"facet_27530\"]/li[3]/label/a")
     WebElement filterByClothes;
     @FindBy(xpath = "//*[@id=\"facet_37918\"]/li[1]/label")
     WebElement filterBySizeS;
@@ -21,7 +21,7 @@ public class AllProductsPage extends BasePage{
     WebElement filterBySizeL;
     @FindBy(xpath = "//*[@id=\"facet_37918\"]/li[4]/label")
     WebElement filterBySizeXL;
-    @FindBy(xpath = "//*[@id=\"facet_58981\"]/li[1]/label")
+    @FindBy(xpath = "//*[@id=\"facet_input_7372_0\"]")
     WebElement filterByWhite;
     @FindBy(xpath = "//*[@id=\"facet_58981\"]/li[2]/label")
     WebElement filterByBlack;
@@ -67,6 +67,10 @@ public class AllProductsPage extends BasePage{
     WebElement filterByDotted;
     @FindBy(xpath = "//*[@id=\"js-product-list\"]/div[1]/div[1]/article/div/div[2]/h2/a")
     WebElement hummingBirdTshirt;
+    @FindBy(xpath = "//*[@id=\"js-active-search-filters\"]/ul/li[1]")
+    WebElement accessoriesFilterEnabled;
+    @FindBy(xpath = "//*[@id=\"js-active-search-filters\"]/ul/li[2]")
+    WebElement whiteFilterEnabled;
 
 
     // Constructor
@@ -198,5 +202,11 @@ public class AllProductsPage extends BasePage{
 
     // Click on the HummingBird T-shirt product
     public void clickHummingBirdTshirt() { hummingBirdTshirt.click(); }
+
+    // Check if the Accessories filter is enabled
+    public boolean checkAccessoriesFilter() { return accessoriesFilterEnabled.isDisplayed(); }
+
+    // Check if the White filter is enabled
+    public boolean checkWhiteFilter() { return whiteFilterEnabled.isDisplayed(); }
 }
 

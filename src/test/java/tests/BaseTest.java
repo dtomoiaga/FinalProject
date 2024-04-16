@@ -5,6 +5,7 @@ import org.openqa.selenium.*;
 import org.testng.Reporter;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
+import pageObjects.AllProductsPage;
 import pageObjects.HomePage;
 import pageObjects.LoginPage;
 import pageObjects.RegisterPage;
@@ -22,6 +23,7 @@ public class BaseTest {
     HomePage homePage;
     LoginPage loginPage;
     RegisterPage registerPage;
+    AllProductsPage allProductsPage;
 
     protected void navigateToHomePage() {
         driver.get(baseUrl);
@@ -89,6 +91,27 @@ public class BaseTest {
         // Register an account
         registerPage = new RegisterPage(driver);
         registerPage.register();
+    }
+
+    public void filterAccessories(){
+        allProductsPage = new AllProductsPage(driver);
+        allProductsPage.clickAccessories();
+        allProductsPage.clickWhite();
+    }
+
+    public void filterArt(){
+        allProductsPage = new AllProductsPage(driver);
+        allProductsPage.clickArt();
+        allProductsPage.clickMattPaper();
+        allProductsPage.clickAvailable();
+        allProductsPage.click40x60();
+    }
+
+    public void filterClothes(){
+        allProductsPage = new AllProductsPage(driver);
+        allProductsPage.clickClothes();
+        allProductsPage.clickSizeM();
+        allProductsPage.clickLongSleeves();
     }
 }
 

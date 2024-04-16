@@ -8,7 +8,7 @@ public class ShoppingCartPageTest extends BaseTest {
     @Test(description = "Add product to cart")
     public void addProductToCart() {
         try {
-            // Precondition: Account registration is needed before each test that requires a login
+            // Precondition: Account registration is needed
 
             // Register an account and login
             register();
@@ -41,7 +41,7 @@ public class ShoppingCartPageTest extends BaseTest {
     @Test(description = "Cancel Add to cart Pop-up")
     public void cancelAddToCartPopup() {
         try {
-            // Precondition: Account registration is needed before each test that requires a login
+            // Precondition: Account registration is needed
 
             // Register an account and login
             register();
