@@ -29,7 +29,6 @@ public class OrderHistoryPageTest extends BaseTest{
             completeOrder();
 
             // Navigate to the order history page
-            HomePage homePage = new HomePage(driver);
             homePage.clickOrdersButton();
 
             // Get all rows of the table and check that there is an order present in the order list
@@ -60,14 +59,12 @@ public class OrderHistoryPageTest extends BaseTest{
             completeOrder();
 
             // Navigate to the order history page
-            HomePage homePage = new HomePage(driver);
             homePage.clickOrdersButton();
 
             // Reorder the previously created order
             OrderHistoryPage orderHistoryPage = new OrderHistoryPage(driver);
             orderHistoryPage.clickReorderButton();
 
-            CheckoutPage checkoutPage = new CheckoutPage(driver);
             checkoutPage.clickContinue1();
             checkoutPage.clickContinue2();
             checkoutPage.selectBankWire();

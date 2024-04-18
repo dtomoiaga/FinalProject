@@ -20,6 +20,10 @@ public class BaseTest {
     HomePage homePage;
     LoginPage loginPage;
     RegisterPage registerPage;
+    CheckoutPage checkoutPage;
+    ProductPage productPage;
+    AllProductsPage allProductsPage;
+    AddToCartPopUp addToCartPopUp;
 
     protected void navigateToHomePage() {
         driver.get(baseUrl);
@@ -95,20 +99,20 @@ public class BaseTest {
         homePage.clickAllProductsButton();
 
         // Click on the HummingBird T-shirt
-        AllProductsPage allProductsPage = new AllProductsPage(driver);
+        allProductsPage = new AllProductsPage(driver);
         allProductsPage.clickHummingBirdTshirt();
 
         // Click on the Add to cart button
-        ProductPage productPage = new ProductPage(driver);
+        productPage = new ProductPage(driver);
         productPage.clickHummingBirdTshirtCartButton();
 
         // Click on the Proceed to Checkout button
-        AddToCartPopUp addToCartPopUp = new AddToCartPopUp(driver);
+        addToCartPopUp = new AddToCartPopUp(driver);
         addToCartPopUp.clickProceedToCheckoutButton();
     }
 
     public void completeOrder(){
-        CheckoutPage checkoutPage = new CheckoutPage(driver);
+        checkoutPage = new CheckoutPage(driver);
         checkoutPage.enterAlias("Mister");
         checkoutPage.enterCompany("Scoala Informala");
         checkoutPage.enterVatNumber("1234");

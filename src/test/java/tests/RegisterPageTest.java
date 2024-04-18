@@ -19,6 +19,7 @@ public class RegisterPageTest extends BaseTest {
         Collection<Object[]> dp = new ArrayList<>();
         ObjectMapper objectMapper = new ObjectMapper();
         File file = new File("src\\test\\resources\\Data\\testData.json");
+        // MAC?????? File file = new File("Data/testData.json");
 
         RegistrationModel[] rmList = objectMapper.readValue(file, RegistrationModel[].class);
 
