@@ -8,7 +8,8 @@ import dataProviders.DBDataProviders;
 
 public class LoginPageTest extends BaseTest {
 
-    @Test(dataProvider = "login_errors_sql", dataProviderClass = DBDataProviders.class, description = "Login using data from DB")
+    @Test(dataProvider = "login_errors_sql", dataProviderClass = DBDataProviders.class,
+            description = "Login using data from DB", groups = {"Smoke tests", "Regression tests"})
     public void loginUsingDataFromDB(String username, String password, String authenticationErrorMessage) {
         try {
             // Register an account and sign out

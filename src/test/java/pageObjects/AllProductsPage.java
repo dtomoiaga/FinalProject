@@ -1,27 +1,22 @@
 package pageObjects;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class AllProductsPage extends BasePage{
+public class AllProductsPage extends BasePage {
 
     // Locators
-    @FindBy(xpath = "//*[@id=\"facet_43592\"]/li[1]/label/a/text()")
+    @FindBy(xpath = "/html/body/main/section/div/div/div[1]/div[4]/div[2]/section[1]/ul/li[1]/label/a")
     WebElement filterByAccessories;
-    @FindBy(xpath = "//*[@id=\"facet_27530\"]/li[2]/label/a")
+    @FindBy(xpath = "/html/body/main/section/div/div/div[1]/div[4]/div[2]/section[1]/ul/li[2]/label/a")
     WebElement filterByArt;
-    @FindBy(xpath = "//*[@id=\"facet_27530\"]/li[3]/label/a")
+    @FindBy(xpath = "/html/body/main/section/div/div/div[1]/div[4]/div[2]/section[1]/ul/li[3]/label/a")
     WebElement filterByClothes;
-    @FindBy(xpath = "//*[@id=\"facet_37918\"]/li[1]/label")
-    WebElement filterBySizeS;
-    @FindBy(xpath = "//*[@id=\"facet_37918\"]/li[2]/label")
+    @FindBy(xpath = "/html/body/main/section/div/div/div[1]/div[4]/div[2]/section[2]/ul/li[2]/label/a")
     WebElement filterBySizeM;
-    @FindBy(xpath = "//*[@id=\"facet_37918\"]/li[3]/label")
-    WebElement filterBySizeL;
-    @FindBy(xpath = "//*[@id=\"facet_37918\"]/li[4]/label")
-    WebElement filterBySizeXL;
-    @FindBy(xpath = "//*[@id=\"facet_input_7372_0\"]")
+    @FindBy(xpath = "/html/body/main/section/div/div/div[1]/div[4]/div[2]/section[2]/ul/li[1]/label/a")
     WebElement filterByWhite;
     @FindBy(xpath = "//*[@id=\"facet_58981\"]/li[2]/label")
     WebElement filterByBlack;
@@ -37,12 +32,10 @@ public class AllProductsPage extends BasePage{
     WebElement filterByRecycledCardboard;
     @FindBy(xpath = "//*[@id=\"facet_64971\"]/li[1]/label")
     WebElement filterBy120Pages;
-    @FindBy(xpath = "//*[@id=\"facet_64971\"]/li[2]/label")
+    @FindBy(xpath = "/html/body/main/section/div/div/div[1]/div[4]/div[2]/section[4]/ul/li[1]/label/a")
     WebElement filterByLongSleeves;
     @FindBy(xpath = "//*[@id=\"facet_64971\"]/li[3]/label")
     WebElement filterByRemovableCover;
-    @FindBy(xpath = "//*[@id=\"facet_64971\"]/li[4]/label")
-    WebElement filterByShortSleeves;
     @FindBy(xpath = "//*[@id=\"facet_65314\"]/li[1]/label")
     WebElement filterByAvailable;
     @FindBy(xpath = "//*[@id=\"facet_65314\"]/li[2]/label")
@@ -69,15 +62,18 @@ public class AllProductsPage extends BasePage{
     WebElement hummingBirdTshirt;
     @FindBy(xpath = "//*[@id=\"js-active-search-filters\"]/ul/li[1]")
     WebElement accessoriesFilterEnabled;
-    @FindBy(xpath = "//*[@id=\"js-active-search-filters\"]/ul/li[2]")
-    WebElement whiteFilterEnabled;
+    @FindBy(xpath = "/html/body/main/section/div/div/div[2]/section/section/div[2]/section/ul/li")
+    WebElement artFilterEnabled;
 
+    @FindBy(xpath = "/html/body/main/section/div/div/div[2]/section/section/div[2]/section/ul/li")
+    WebElement clothesFilterEnabled;
 
     // Constructor
     public AllProductsPage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
     }
+
     @Override
     public void waitForPageToLoad() {
     }
@@ -96,20 +92,8 @@ public class AllProductsPage extends BasePage{
         filterByClothes.click();
     }
 
-    public void clickSizeS() {
-        filterBySizeS.click();
-    }
-
     public void clickSizeM() {
         filterBySizeM.click();
-    }
-
-    public void clickSizeL() {
-        filterBySizeL.click();
-    }
-
-    public void clickSizeXL() {
-        filterBySizeXL.click();
     }
 
     public void clickWhite() {
@@ -150,10 +134,6 @@ public class AllProductsPage extends BasePage{
 
     public void clickRemovableCover() {
         filterByRemovableCover.click();
-    }
-
-    public void clickShortSleeves() {
-        filterByShortSleeves.click();
     }
 
     public void clickAvailable() {
@@ -201,12 +181,18 @@ public class AllProductsPage extends BasePage{
     }
 
     // Click on the HummingBird T-shirt product
-    public void clickHummingBirdTshirt() { hummingBirdTshirt.click(); }
+    public void clickHummingBirdTshirt() {
+        hummingBirdTshirt.click();
+    }
 
     // Check if the Accessories filter is enabled
-    public boolean checkAccessoriesFilter() { return accessoriesFilterEnabled.isDisplayed(); }
+    public boolean checkAccessoriesFilter() {
+        return accessoriesFilterEnabled.isDisplayed();
+    }
 
-    // Check if the White filter is enabled
-    public boolean checkWhiteFilter() { return whiteFilterEnabled.isDisplayed(); }
+    // Check if the Art filter is enabled
+    public boolean checkArtFilter() { return artFilterEnabled.isDisplayed(); }
+
+    public boolean checkClothesFilter() { return clothesFilterEnabled.isDisplayed(); }
 }
 

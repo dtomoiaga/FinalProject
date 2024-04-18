@@ -9,33 +9,35 @@ public class CheckoutPage extends BasePage{
 
     // Locators for the Addresses section of the checkout
     @FindBy(id= "field-alias")
-    WebElement aliasField;
+    public WebElement aliasField;
     @FindBy(id= "field-firstname")
     WebElement firstNameField;
     @FindBy(id= "field-lastname")
     WebElement lastNameField;
     @FindBy(id= "field-company")
-    WebElement companyField;
+    public WebElement companyField;
     @FindBy(id= "field-vat_number")
-    WebElement vatNumberField;
-    @FindBy(id= "field-adress1")
-    WebElement address1Field;
-    @FindBy(id= "field-adress2")
-    WebElement address2Field;
-    @FindBy(id= "field-postcode")
-    WebElement zipCodeField;
-    @FindBy(id= "field-city")
-    WebElement cityField;
-    @FindBy(id= "field-phone")
-    WebElement phoneField;
+    public WebElement vatNumberField;
+    @FindBy(xpath = "//*[@id=\"field-address1\"]")
+    public WebElement address1Field;
+    @FindBy(xpath = "//*[@id=\"field-address2\"]")
+    public WebElement address2Field;
+    @FindBy(xpath = "//*[@id=\"field-postcode\"]")
+    public WebElement zipCodeField;
+    @FindBy(xpath = "//*[@id=\"field-city\"]")
+    public WebElement cityField;
+    @FindBy(xpath = "//*[@id=\"field-phone\"]")
+    public WebElement phoneField;
     @FindBy(xpath = "//*[@id=\"delivery-address\"]/div/footer/button")
-    WebElement continueButton;
+    WebElement continueButton1;
+    @FindBy(xpath = "//*[@id=\"js-delivery\"]/button")
+    WebElement continueButton2;
 
     // Locators for Shipping Method section of the checkout
     @FindBy(xpath = "//*[@id=\"delivery_option_1\"]")
     WebElement clickAndCollectRadioButton;
     @FindBy(xpath = "//*[@id=\"delivery_option_2\"]")
-    WebElement myCarrierRadioButton;
+    public WebElement myCarrierRadioButton;
     @FindBy(id= "delivery-message")
     WebElement deliveryDetailsField;
 
@@ -43,9 +45,15 @@ public class CheckoutPage extends BasePage{
     @FindBy(id= "payment-option-1")
     WebElement bankWire;
     @FindBy(id= "payment-option-2")
-    WebElement cashOnDelivery;
+    public WebElement cashOnDelivery;
     @FindBy(id= "payment-option-3")
     WebElement checkPayment;
+    @FindBy(xpath = "//*[@id=\"conditions_to_approve[terms-and-conditions]\"]")
+    WebElement termsCheckbox;
+    @FindBy(xpath = "//*[@id=\"payment-confirmation\"]/div[1]/button")
+    WebElement placeOrderButton;
+    @FindBy(xpath = "//*[@id=\"content-hook_order_confirmation\"]/div/div/div/h3")
+    WebElement orderConfirmedTitle;
 
 
 
@@ -99,8 +107,8 @@ public class CheckoutPage extends BasePage{
         phoneField.sendKeys(phone);
     }
 
-    public void clickContinue() {
-        continueButton.click();
+    public void clickContinue1() {
+        continueButton1.click();
     }
 
     // Methods for the Shipping Method section of the checkout
@@ -129,5 +137,12 @@ public class CheckoutPage extends BasePage{
         checkPayment.click();
     }
 
+    public void setTermsCheckbox(){ termsCheckbox.click(); }
+
+    public void clickContinue2(){ continueButton2.click(); }
+
+    public void clickPlaceOrderButton(){ placeOrderButton.click(); }
+
+    public String getOrderConfirmedText(){ return orderConfirmedTitle.getText(); }
 
 }

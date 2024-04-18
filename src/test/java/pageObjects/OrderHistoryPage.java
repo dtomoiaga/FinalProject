@@ -1,5 +1,5 @@
 package pageObjects;
-import org.openqa.selenium.By;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -12,6 +12,8 @@ public class OrderHistoryPage extends BasePage{
     WebElement orderDetailsButton;
     @FindBy(xpath = "//*[@id=\"content\"]/table/tbody/tr/td[6]/a[2]")
     WebElement reorderButton;
+    @FindBy(xpath = "//*[@id=\"content\"]/table")
+    public WebElement orderList;
 
     // Constructor
     public OrderHistoryPage(WebDriver driver) {

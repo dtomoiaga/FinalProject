@@ -5,10 +5,7 @@ import org.openqa.selenium.*;
 import org.testng.Reporter;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
-import pageObjects.AllProductsPage;
-import pageObjects.HomePage;
-import pageObjects.LoginPage;
-import pageObjects.RegisterPage;
+import pageObjects.*;
 import utils.BrowserUtils;
 import utils.ConstantUtils;
 
@@ -23,7 +20,6 @@ public class BaseTest {
     HomePage homePage;
     LoginPage loginPage;
     RegisterPage registerPage;
-    AllProductsPage allProductsPage;
 
     protected void navigateToHomePage() {
         driver.get(baseUrl);
@@ -44,6 +40,7 @@ public class BaseTest {
         // Navigate to the base URL
         navigateToHomePage();
 
+        // The page has an overlay and no elements can be found; a switch to the iframe under the overlay is needed
         WebElement iframe = driver.findElement(By.id("framelive"));
         driver.switchTo().frame(iframe);
     }
@@ -93,25 +90,39 @@ public class BaseTest {
         registerPage.register();
     }
 
-    public void filterAccessories(){
-        allProductsPage = new AllProductsPage(driver);
-        allProductsPage.clickAccessories();
-        allProductsPage.clickWhite();
+    public void addProductToCart(){
+        // Navigate to the "All products" page
+        homePage.clickAllProductsButton();
+
+        // Click on the HummingBird T-shirt
+        AllProductsPage allProductsPage = new AllProductsPage(driver);
+        allProductsPage.clickHummingBirdTshirt();
+
+        // Click on the Add to cart button
+        ProductPage productPage = new ProductPage(driver);
+        productPage.clickHummingBirdTshirtCartButton();
+
+        // Click on the Proceed to Checkout button
+        AddToCartPopUp addToCartPopUp = new AddToCartPopUp(driver);
+        addToCartPopUp.clickProceedToCheckoutButton();
     }
 
-    public void filterArt(){
-        allProductsPage = new AllProductsPage(driver);
-        allProductsPage.clickArt();
-        allProductsPage.clickMattPaper();
-        allProductsPage.clickAvailable();
-        allProductsPage.click40x60();
-    }
-
-    public void filterClothes(){
-        allProductsPage = new AllProductsPage(driver);
-        allProductsPage.clickClothes();
-        allProductsPage.clickSizeM();
-        allProductsPage.clickLongSleeves();
+    public void completeOrder(){
+        CheckoutPage checkoutPage = new CheckoutPage(driver);
+        checkoutPage.enterAlias("Mister");
+        checkoutPage.enterCompany("Scoala Informala");
+        checkoutPage.enterVatNumber("1234");
+        checkoutPage.enterAddress1("Libertatii 1");
+        checkoutPage.enterAddress2("Republicii 2");
+        checkoutPage.enterZipCode("12345");
+        checkoutPage.enterCity("Cluj-Napoca");
+        checkoutPage.enterPhone("9898989");
+        checkoutPage.clickContinue1();
+        checkoutPage.selectMyCarrier();
+        checkoutPage.clickContinue2();
+        checkoutPage.selectCashOnDelivery();
+        checkoutPage.setTermsCheckbox();
+        checkoutPage.clickPlaceOrderButton();
     }
 }
 

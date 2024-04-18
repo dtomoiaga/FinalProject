@@ -6,7 +6,7 @@ import pageObjects.*;
 
 public class WishlistPageTest extends BaseTest {
 
-    @Test(description = "Create a new wishlist")
+    @Test(description = "Create a new wishlist", groups = "Regression tests")
     public void createNewWishlist() {
         try {
             // Precondition: Account registration is needed
@@ -29,7 +29,7 @@ public class WishlistPageTest extends BaseTest {
         }
     }
 
-    @Test(description = "Add to wishlist - not signed in")
+    @Test(description = "Add to wishlist - not signed in", groups = "Regression tests")
     public void addToWishlistNotSignedIn() {
         try {
             // Click on the first article's "Add to Wishlist" button
@@ -46,7 +46,7 @@ public class WishlistPageTest extends BaseTest {
 
     }
 
-    @Test(description = "Cancel the Sign In pop-up")
+    @Test(description = "Cancel the Sign In pop-up", groups = "Regression tests")
     public void cancelTheSignInPopUp() {
         try {
             // Click on the first article's "Add to Wishlist" button
@@ -66,7 +66,7 @@ public class WishlistPageTest extends BaseTest {
 
     }
 
-    @Test(description = "Add to wishlist - signed in")
+    @Test(description = "Add to wishlist - signed in", groups = {"Smoke tests", "Regression tests"})
     public void addToWishlistSignedIn() {
         try {
             // Precondition: Account registration is needed

@@ -47,7 +47,7 @@ public class WishlistPage extends BasePage{
     // Click on the Add name field from the Create wishlist dialog
     public void addWishlistName(){ wishlistNameTextBox.sendKeys("TestWishlist");}
 
-    // Click on the Create wishlist button from the Create wishlist popup
+    // Click on the Create wishlist button from the "Create wishlist" popup
     public void clickCreateWishlistButton() { createWishlistButton.click();}
 
     // Get the text from the newly created wishlist

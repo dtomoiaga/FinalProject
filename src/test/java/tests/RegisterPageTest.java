@@ -29,7 +29,7 @@ public class RegisterPageTest extends BaseTest {
     }
 
 
-    @Test(dataProvider = "jsonDP", description = "Register an account using data from a json file")
+    @Test(dataProvider = "jsonDP", description = "Register an account using data from a json file", groups = {"Smoke tests", "Regression tests"})
     public void registerUsingStaticData(RegistrationModel registrationModel) {
         try {
             // Navigate to the Sign-In page

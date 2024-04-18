@@ -15,6 +15,9 @@
                     <include name="addProductToCart"/>
                 </methods>
             </class>
+            <class name="tests.CheckoutTest">
+
+            </class>
         </classes>
     </test>
     <test name="Regression tests">
@@ -22,12 +25,10 @@
             <class name="tests.RegisterPageTest"></class>
             <class name="tests.LoginPageTest"></class>
             <class name="tests.WishlistPageTest"></class>
+            <class name="tests.FilteringTest"></class>
             <class name="tests.ShoppingCartPageTest"></class>
-        </classes>
-    </test>
-    <test name="Register test">
-        <classes>
-            <class name="tests.RegisterPageTest"></class>
+            <class name="tests.CheckoutTest"></class>
+            <class name="tests.OrderHistoryPageTest"></class>
         </classes>
     </test>
 </suite>

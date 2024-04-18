@@ -5,7 +5,7 @@ import org.testng.annotations.Test;
 import pageObjects.*;
 
 public class ShoppingCartPageTest extends BaseTest {
-    @Test(description = "Add product to cart")
+    @Test(description = "Add product to cart", groups = {"Smoke tests", "Regression tests"})
     public void addProductToCart() {
         try {
             // Precondition: Account registration is needed
@@ -38,7 +38,7 @@ public class ShoppingCartPageTest extends BaseTest {
         }
     }
 
-    @Test(description = "Cancel Add to cart Pop-up")
+    @Test(description = "Cancel Add to cart Pop-up", groups = "Regression tests")
     public void cancelAddToCartPopup() {
         try {
             // Precondition: Account registration is needed
@@ -57,7 +57,7 @@ public class ShoppingCartPageTest extends BaseTest {
             ProductPage productPage = new ProductPage(driver);
             productPage.clickHummingBirdTshirtCartButton();
 
-            // Click on the Proceed to Checkout button
+            // Click on the Continue shopping button
             AddToCartPopUp addToCartPopUp = new AddToCartPopUp(driver);
             addToCartPopUp.clickContinueShoppingButton();
 
