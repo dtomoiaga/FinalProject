@@ -11,47 +11,19 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 
 public class BrowserUtils {
 
-//    public static WebDriver setUpBrowser(String browserName) {
-//        switch (browserName.toLowerCase()) {
-//            case ("chrome"): {
-//                return new ChromeDriver(getChromeOptions());
-//            }
-//            case ("firefox"): {
-//                return new FirefoxDriver();
-//            }
-//            case ("edge"): {
-//                return new EdgeDriver(getEdgeOptions());
-//            }
-//            default: {
-//                System.out.println("Unsupported browser. We will switch default to chrome");
-//                return new ChromeDriver();
-//            }
-//        }
-//    }
-//
-//    private static ChromeOptions getChromeOptions() {
-//        ChromeOptions options = new ChromeOptions();
-//        options.addArguments("start-maximized", "--incognito");
-//        return options;
-//    }
-//
-//    private static EdgeOptions getEdgeOptions() {
-//        EdgeOptions options = new EdgeOptions();
-//        options.addArguments("start-maximized");
-//        return options;
-//    }
-public static WebDriver setUpBrowser(String browserName) {
-    switch (browserName.toLowerCase()) {
-        case "chrome":
-            return setUpChrome();
-        case "firefox":
-            return setUpFirefox();
-        case "edge":
-            return setUpEdge();
-        default:
-            throw new IllegalArgumentException("Unsupported browser: " + browserName);
+    public static WebDriver setUpBrowser(String browserName) {
+        switch (browserName.toLowerCase()) {
+            case "chrome":
+                return setUpChrome();
+            case "firefox":
+                return setUpFirefox();
+            case "edge":
+                return setUpEdge();
+            default:
+                System.out.println("Unsupported browser: " + browserName + ". Defaulting to Chrome.");
+                return setUpChrome(); // Default to Chrome
+        }
     }
-}
 
     private static WebDriver setUpChrome() {
         WebDriverManager.chromedriver().setup();
@@ -72,5 +44,4 @@ public static WebDriver setUpBrowser(String browserName) {
         options.addArguments("start-maximized");
         return new EdgeDriver(options);
     }
-
 }

@@ -2,7 +2,10 @@ package tests;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pageObjects.*;
+import pageObjects.AllProductsPage;
+import pageObjects.ProductPage;
+import pageObjects.AddToCartPopUp;
+import pageObjects.ShoppingCartPage;
 
 public class ShoppingCartPageTest extends BaseTest {
     @Test(description = "Add product to cart", groups = {"Smoke tests", "Regression tests"})
@@ -22,7 +25,7 @@ public class ShoppingCartPageTest extends BaseTest {
 
             // Click on the Add to cart button
             ProductPage productPage = new ProductPage(driver);
-            productPage.clickHummingBirdTshirtCartButton();
+            productPage.clickProductCartButton();
 
             // Click on the Proceed to Checkout button
             AddToCartPopUp addToCartPopUp = new AddToCartPopUp(driver);
@@ -31,7 +34,8 @@ public class ShoppingCartPageTest extends BaseTest {
             // Check if the product is in the shopping cart
             ShoppingCartPage shoppingCartPage = new ShoppingCartPage(driver);
             Assert.assertTrue(shoppingCartPage.getShoppingCartTitleText().contains("CART") &&
-                    shoppingCartPage.getHummingBirdText().contains("Hummingbird"));
+                    shoppingCartPage.getProductInCartText().contains("Hummingbird"));
+
         } catch (Throwable e) {
             takeScreenshot();
             throw e;
@@ -55,14 +59,15 @@ public class ShoppingCartPageTest extends BaseTest {
 
             // Click on the Add to cart button
             ProductPage productPage = new ProductPage(driver);
-            productPage.clickHummingBirdTshirtCartButton();
+            productPage.clickProductCartButton();
 
             // Click on the Continue shopping button
             AddToCartPopUp addToCartPopUp = new AddToCartPopUp(driver);
             addToCartPopUp.clickContinueShoppingButton();
 
             // Check that the Pop-up is closed and the product page is displayed
-            Assert.assertTrue(productPage.getHummingBirdTshirtTitleText().contains("HUMMINGBIRD"));
+            Assert.assertTrue(productPage.getProductTitleText().contains("HUMMINGBIRD"));
+
         } catch (Throwable e) {
             takeScreenshot();
             throw e;

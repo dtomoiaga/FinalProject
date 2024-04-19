@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class OrderHistoryPage extends BasePage{
 
@@ -22,11 +23,8 @@ public class OrderHistoryPage extends BasePage{
     }
     @Override
     public void waitForPageToLoad() {
-    }
-
-    // Click on "Details" button
-    public void clickDetailsButton() {
-        orderDetailsButton.click();
+        orderDetailsButton = wait.until(ExpectedConditions.visibilityOf(orderDetailsButton));
+        reorderButton = wait.until(ExpectedConditions.visibilityOf(reorderButton));
     }
 
     // Click on "Reorder" button

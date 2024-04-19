@@ -1,9 +1,11 @@
 package pageObjects;
+
 import lombok.Getter;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class WishlistPage extends BasePage{
 
@@ -23,7 +25,7 @@ public class WishlistPage extends BasePage{
    @FindBy(xpath = "//*[@id=\"content\"]/div/ul/li[2]/a/p")
    WebElement newWishlistText;
    @FindBy(xpath = "//*[@id=\"content\"]/ul/li/div/a/div[2]/p[1]")
-   WebElement hummingbirdTshirtText;
+   WebElement productText;
 
     // Constructor
     public WishlistPage(WebDriver driver) {
@@ -32,6 +34,9 @@ public class WishlistPage extends BasePage{
     }
     @Override
     public void waitForPageToLoad() {
+        createNewListButton = wait.until(ExpectedConditions.visibilityOf(createNewListButton));
+        defaultWishlist = wait.until(ExpectedConditions.visibilityOf(defaultWishlist));
+
     }
 
     // Click on "Create new list" button
@@ -54,5 +59,5 @@ public class WishlistPage extends BasePage{
     public String getWishlistText() { return newWishlistText.getText(); }
 
     // Get the text from the Hummingbird T-shirt item
-    public String getHummingbirdTShirtText(){ return hummingbirdTshirtText.getText(); }
+    public String getProductText(){ return productText.getText(); }
 }

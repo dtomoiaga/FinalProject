@@ -2,10 +2,12 @@ package tests;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pageObjects.*;
+import pageObjects.WishlistPage;
+import pageObjects.HomePage;
+import pageObjects.SignInPopUp;
+import pageObjects.AddToWishlistPopUp;
 
 public class WishlistPageTest extends BaseTest {
-
     @Test(description = "Create a new wishlist", groups = "Regression tests")
     public void createNewWishlist() {
         try {
@@ -23,6 +25,7 @@ public class WishlistPageTest extends BaseTest {
             wishlistPage.addWishlistName();
             wishlistPage.clickCreateWishlistButton();
             Assert.assertTrue(wishlistPage.getWishlistText().contains("TestWishlist"));
+
         } catch (Throwable e) {
             takeScreenshot();
             throw e;
@@ -39,11 +42,11 @@ public class WishlistPageTest extends BaseTest {
             // Check that the Sign In pop-up is displayed
             SignInPopUp signInPopUp = new SignInPopUp(driver);
             Assert.assertTrue(signInPopUp.isSignInPopUpDisplayed());
+
         } catch (Throwable e) {
             takeScreenshot();
             throw e;
         }
-
     }
 
     @Test(description = "Cancel the Sign In pop-up", groups = "Regression tests")
@@ -59,11 +62,11 @@ public class WishlistPageTest extends BaseTest {
 
             // Check that the Sign In pop-up is displayed
             Assert.assertFalse(signInPopUp.isSignInPopUpDisplayed());
+
         } catch (Throwable e) {
             takeScreenshot();
             throw e;
         }
-
     }
 
     @Test(description = "Add to wishlist - signed in", groups = {"Smoke tests", "Regression tests"})
@@ -91,7 +94,8 @@ public class WishlistPageTest extends BaseTest {
             wishlistPage.clickDefaultList();
 
             // Check if the added Hummingbird T-shirt is present
-            Assert.assertTrue(wishlistPage.getHummingbirdTShirtText().contains("Hummingbird"));
+            Assert.assertTrue(wishlistPage.getProductText().contains("Hummingbird"));
+
         } catch (Throwable e) {
             takeScreenshot();
             throw e;

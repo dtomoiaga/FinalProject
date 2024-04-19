@@ -2,9 +2,12 @@ package tests;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import objectModels.RegistrationModel;
+import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import pageObjects.*;
+import pageObjects.HomePage;
+import pageObjects.LoginPage;
+import pageObjects.RegisterPage;
 
 import java.io.File;
 import java.io.IOException;
@@ -13,13 +16,11 @@ import java.util.Collection;
 import java.util.Iterator;
 
 public class RegisterPageTest extends BaseTest {
-
     @DataProvider(name = "jsonDP")
     public Iterator<Object[]> jsonDpCollection() throws IOException {
         Collection<Object[]> dp = new ArrayList<>();
         ObjectMapper objectMapper = new ObjectMapper();
         File file = new File("src\\test\\resources\\Data\\testData.json");
-        // MAC?????? File file = new File("Data/testData.json");
 
         RegistrationModel[] rmList = objectMapper.readValue(file, RegistrationModel[].class);
 
@@ -28,7 +29,6 @@ public class RegisterPageTest extends BaseTest {
 
         return dp.iterator();
     }
-
 
     @Test(dataProvider = "jsonDP", description = "Register an account using data from a json file", groups = {"Smoke tests", "Regression tests"})
     public void registerUsingStaticData(RegistrationModel registrationModel) {
@@ -51,6 +51,10 @@ public class RegisterPageTest extends BaseTest {
             registerPage.enterPassword(registrationModel.getPassword());
             registerPage.clickCheckboxes();
             registerPage.clickSaveButton();
+
+            // Check if the registration is successful
+            Assert.assertTrue(homePage.getSignOutButton().isDisplayed());
+
         } catch (Throwable e) {
             takeScreenshot();
             throw e;

@@ -27,7 +27,6 @@ public class DatabaseUtils {
         }
     }
 
-
     public Statement getStatement(Connection connection) throws SQLException {
         return connection.createStatement();
     }

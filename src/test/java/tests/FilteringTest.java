@@ -4,25 +4,25 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import pageObjects.AllProductsPage;
 
-public class FilteringTest extends BaseTest{
+public class FilteringTest extends BaseTest {
     @Test(description = "Filter by Accessories", groups = "Regression tests")
-    public void filterByAccessories(){
+    public void filterByAccessories() {
         try {
-        // Precondition: Account registration is needed
+            // Precondition: Account registration is needed
 
-        // Register an account and login
-        register();
+            // Register an account and login
+            register();
 
-        // Navigate to the "All products" page
-        homePage.clickAllProductsButton();
+            // Navigate to the "All products" page
+            homePage.clickAllProductsButton();
 
-        // Filter by Accessories
-        AllProductsPage allProductsPage = new AllProductsPage(driver);
-        allProductsPage = new AllProductsPage(driver);
-        allProductsPage.clickAccessories();
+            // Filter by Accessories
+            AllProductsPage allProductsPage = new AllProductsPage(driver);
+            allProductsPage.clickAccessories();
 
-        // Check if the filter is set
-        Assert.assertTrue(allProductsPage.checkAccessoriesFilter());
+            // Check if the filter is set
+            Assert.assertTrue(allProductsPage.checkAccessoriesFilter());
+
         } catch (Throwable e) {
             takeScreenshot();
             throw e;
@@ -46,6 +46,7 @@ public class FilteringTest extends BaseTest{
 
             // Check if the filter is set
             Assert.assertTrue(allProductsPage.checkArtFilter());
+
         } catch (Throwable e) {
             takeScreenshot();
             throw e;
@@ -53,7 +54,7 @@ public class FilteringTest extends BaseTest{
     }
 
     @Test(description = "Filter by Clothes - this test will fail", groups = "Regression tests")
-    public void filterByClothes(){
+    public void filterByClothes() {
         try {
             // Precondition: Account registration is needed
 
@@ -73,9 +74,8 @@ public class FilteringTest extends BaseTest{
             Assert.assertTrue(allProductsPage.checkClothesFilter());
 
         } catch (Throwable e) {
-        takeScreenshot();
-        throw e;
+            takeScreenshot();
+            throw e;
+        }
     }
-    }
-
 }

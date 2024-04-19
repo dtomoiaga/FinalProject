@@ -5,5 +5,4 @@ public class ConstantUtils {
             "\\config.properties";
     public static final String SCREENSHOT_FILE = "target\\surefire-reports" +
             "\\screenshot";
-
 }

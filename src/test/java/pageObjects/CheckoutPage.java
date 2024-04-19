@@ -1,22 +1,20 @@
 package pageObjects;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
-public class CheckoutPage extends BasePage{
+public class CheckoutPage extends BasePage {
 
     // Locators for the Addresses section of the checkout
-    @FindBy(id= "field-alias")
+    @FindBy(id = "field-alias")
     public WebElement aliasField;
-    @FindBy(id= "field-firstname")
-    WebElement firstNameField;
-    @FindBy(id= "field-lastname")
-    WebElement lastNameField;
-    @FindBy(id= "field-company")
+    @FindBy(id = "field-company")
     public WebElement companyField;
-    @FindBy(id= "field-vat_number")
+    @FindBy(xpath = "//*[@id=\"field-vat_number\"]")
     public WebElement vatNumberField;
     @FindBy(xpath = "//*[@id=\"field-address1\"]")
     public WebElement address1Field;
@@ -24,30 +22,28 @@ public class CheckoutPage extends BasePage{
     public WebElement address2Field;
     @FindBy(xpath = "//*[@id=\"field-postcode\"]")
     public WebElement zipCodeField;
-    @FindBy(xpath = "//*[@id=\"field-city\"]")
+    @FindBy(xpath = "/html/body/main/section/div/div/div/section/div/div[1]/section[2]/div/div/form/section/div[9]/div[1]/input")
     public WebElement cityField;
+    @FindBy(xpath = "//*[@id=\"field-id_country\"]")
+    WebElement countryDropdownMenu;
     @FindBy(xpath = "//*[@id=\"field-phone\"]")
     public WebElement phoneField;
-    @FindBy(xpath = "//*[@id=\"delivery-address\"]/div/footer/button")
-    WebElement continueButton1;
-    @FindBy(xpath = "//*[@id=\"js-delivery\"]/button")
-    WebElement continueButton2;
+    @FindBy(xpath = "/html/body/main/section/div/div/div/section/div/div[1]/section[2]/div/div/form/footer/button")
+    WebElement addressContinueButton;
+    @FindBy(xpath = "/html/body/main/section/div/div/div/section/div/div[1]/section[2]/div/div/form/div[2]/button")
+    WebElement editAddressContinueButton;
+    @FindBy(xpath = "/html/body/main/section/div/div/div/section/div/div[1]/section[3]/div/div[2]/form/button")
+    WebElement shippingMethodContinueButton;
 
     // Locators for Shipping Method section of the checkout
-    @FindBy(xpath = "//*[@id=\"delivery_option_1\"]")
-    WebElement clickAndCollectRadioButton;
     @FindBy(xpath = "//*[@id=\"delivery_option_2\"]")
     public WebElement myCarrierRadioButton;
-    @FindBy(id= "delivery-message")
-    WebElement deliveryDetailsField;
 
     // Locators for the Payment section of the checkout
-    @FindBy(id= "payment-option-1")
+    @FindBy(id = "payment-option-1")
     WebElement bankWire;
-    @FindBy(id= "payment-option-2")
+    @FindBy(id = "payment-option-2")
     public WebElement cashOnDelivery;
-    @FindBy(id= "payment-option-3")
-    WebElement checkPayment;
     @FindBy(xpath = "//*[@id=\"conditions_to_approve[terms-and-conditions]\"]")
     WebElement termsCheckbox;
     @FindBy(xpath = "//*[@id=\"payment-confirmation\"]/div[1]/button")
@@ -56,27 +52,21 @@ public class CheckoutPage extends BasePage{
     WebElement orderConfirmedTitle;
 
 
-
     // Constructor
     public CheckoutPage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
     }
+
     @Override
     public void waitForPageToLoad() {
+        aliasField = wait.until(ExpectedConditions.visibilityOf(aliasField));
+        companyField = wait.until(ExpectedConditions.visibilityOf(companyField));
     }
 
     // Methods for the Addresses section of the checkout
     public void enterAlias(String alias) {
         aliasField.sendKeys(alias);
-    }
-
-    public void enterFirstName(String firstName) {
-        firstNameField.sendKeys(firstName);
-    }
-
-    public void enterLastName(String lastName) {
-        lastNameField.sendKeys(lastName);
     }
 
     public void enterCompany(String company) {
@@ -103,25 +93,28 @@ public class CheckoutPage extends BasePage{
         cityField.sendKeys(city);
     }
 
+    public void selectCountry(String countryName) {
+        countryDropdownMenu.click();
+
+        WebElement countryOption = countryDropdownMenu.findElement(By.xpath("//option[text()='" + countryName + "']"));
+        countryOption.click();
+    }
+
     public void enterPhone(String phone) {
         phoneField.sendKeys(phone);
     }
 
-    public void clickContinue1() {
-        continueButton1.click();
+    public void clickAddressContinueButton() {
+        addressContinueButton.click();
+    }
+
+    public void clickEditAddressContinueButton() {
+        editAddressContinueButton.click();
     }
 
     // Methods for the Shipping Method section of the checkout
-    public void selectClickAndCollect() {
-        clickAndCollectRadioButton.click();
-    }
-
     public void selectMyCarrier() {
         myCarrierRadioButton.click();
-    }
-
-    public void enterDeliveryDetails(String details) {
-        deliveryDetailsField.sendKeys(details);
     }
 
     // Methods for the Payment section of the checkout
@@ -133,16 +126,20 @@ public class CheckoutPage extends BasePage{
         cashOnDelivery.click();
     }
 
-    public void selectCheckPayment() {
-        checkPayment.click();
+    public void setTermsCheckbox() {
+        termsCheckbox.click();
     }
 
-    public void setTermsCheckbox(){ termsCheckbox.click(); }
+    public void clickShippingMethodContinueButton() {
+        shippingMethodContinueButton.click();
+    }
 
-    public void clickContinue2(){ continueButton2.click(); }
+    public void clickPlaceOrderButton() {
+        placeOrderButton.click();
+    }
 
-    public void clickPlaceOrderButton(){ placeOrderButton.click(); }
-
-    public String getOrderConfirmedText(){ return orderConfirmedTitle.getText(); }
+    public String getOrderConfirmedText() {
+        return orderConfirmedTitle.getText();
+    }
 
 }

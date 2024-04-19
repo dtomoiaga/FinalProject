@@ -1,4 +1,5 @@
 package pageObjects;
+
 import lombok.Getter;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -6,15 +7,15 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-public class HomePage extends BasePage{
-    @FindBy(id= "_desktop_cart")
+public class HomePage extends BasePage {
+    @FindBy(id = "_desktop_cart")
     WebElement cartButton;
-    @FindBy(id= "_desktop_user_info")
+    @FindBy(id = "_desktop_user_info")
     WebElement signInButton;
     @Getter
     @FindBy(xpath = "//*[@id=\"_desktop_user_info\"]/div/a[1]")
     WebElement signOutButton;
-    @FindBy(xpath = "//*[@id=\"content\"]/section[1]/a")
+    @FindBy(xpath = "/html/body/main/section/div/div/div/section/section/section[1]/a")
     WebElement allProductsButton;
     @FindBy(xpath = "//*[@id=\"footer_account_list\"]/li[5]/a")
     WebElement wishlistButton;
@@ -24,7 +25,6 @@ public class HomePage extends BasePage{
     WebElement articleOneWishlistButton;
     @FindBy(xpath = "//*[@id=\"content\"]/section[1]/div/div[1]/article/div/div[2]/h3/a")
     WebElement hummingbirdTShirt;
-
 
     // Constructor
     public HomePage(WebDriver driver) {
@@ -58,11 +58,6 @@ public class HomePage extends BasePage{
         allProductsButton.click();
     }
 
-    // Click on "Cart" button
-    public void clickCartButton() {
-        cartButton.click();
-    }
-
     // Click on "Orders" button
     public void clickOrdersButton() {
         ordersButton.click();
@@ -73,9 +68,8 @@ public class HomePage extends BasePage{
         articleOneWishlistButton.click();
     }
 
-    // Get the text from the newly created wishlist
-    public String getHummingbirdTShirtText() { return hummingbirdTShirt.getText(); }
-
-
-
+    // Get the text from the Hummingbird T-shirt title
+    public String getHummingbirdTShirtText() {
+        return hummingbirdTShirt.getText();
+    }
 }

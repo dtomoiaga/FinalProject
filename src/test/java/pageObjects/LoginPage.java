@@ -1,8 +1,10 @@
 package pageObjects;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class LoginPage extends BasePage {
 
@@ -25,19 +27,16 @@ public class LoginPage extends BasePage {
         clickSignInButton();
     }
 
-    public void login(){
-        enterEmail("a@a.com");
-        enterPassword("Scoalainformala");
-        clickSignInButton();
-    }
-
     // Constructor
     public LoginPage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
     }
+
     @Override
     public void waitForPageToLoad() {
+        createAccountButton = wait.until(ExpectedConditions.visibilityOf(createAccountButton));
+        signInButton = wait.until(ExpectedConditions.visibilityOf(signInButton));
     }
 
     // Click on "Create Account" button
@@ -60,7 +59,7 @@ public class LoginPage extends BasePage {
         passwordField.sendKeys(password);
     }
 
-    //create method de get error string ca sa iau error message
+    // Get the authentication error message
     public String getAuthenticationErrorMessage(){ return authenticationErrorMessage.getText(); }
 
 }

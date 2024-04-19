@@ -4,14 +4,12 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pageObjects.CheckoutPage;
-import pageObjects.HomePage;
 import pageObjects.OrderHistoryPage;
 import pageObjects.ShoppingCartPage;
 
 import java.util.List;
 
-public class OrderHistoryPageTest extends BaseTest{
+public class OrderHistoryPageTest extends BaseTest {
     @Test(description = "Check if a completed order is displayed in the Order History", groups = "Regression tests")
     public void checkOrderHistory() {
         try {
@@ -43,7 +41,7 @@ public class OrderHistoryPageTest extends BaseTest{
     }
 
     @Test(description = "Reorder an order", groups = "Regression tests")
-    public void reorderOrder(){
+    public void reorderOrder() {
         try {
             // Precondition: Account registration and a complete order is needed
 
@@ -65,8 +63,8 @@ public class OrderHistoryPageTest extends BaseTest{
             OrderHistoryPage orderHistoryPage = new OrderHistoryPage(driver);
             orderHistoryPage.clickReorderButton();
 
-            checkoutPage.clickContinue1();
-            checkoutPage.clickContinue2();
+            checkoutPage.clickEditAddressContinueButton();
+            checkoutPage.clickShippingMethodContinueButton();
             checkoutPage.selectBankWire();
             checkoutPage.setTermsCheckbox();
             checkoutPage.clickPlaceOrderButton();
