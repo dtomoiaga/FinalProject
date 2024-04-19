@@ -21,7 +21,8 @@
                     <version>3.2.5</version>
                     <configuration>
                         <suiteXmlFiles>
-                            <suiteXmlFile>testng.xml</suiteXmlFile>
+                            <suiteXmlFile>regression.xml</suiteXmlFile>
+                            <suiteXmlFile>smoke.xml</suiteXmlFile>
                         </suiteXmlFiles>
                         <properties>
                             <property>

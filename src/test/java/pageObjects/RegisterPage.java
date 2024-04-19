@@ -6,6 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import utils.TestDataUtils;
 
 public class RegisterPage extends BasePage {
 
@@ -29,7 +30,7 @@ public class RegisterPage extends BasePage {
         clickMrRadioButton();
         enterFirstName("Tomoiaga");
         enterLastName("Daniel");
-        enterEmail("email@email.com");
+        enterEmail(TestDataUtils.generateUniqueEmail("email@email.com"));
         enterPassword("Scoalainformala");
         clickCheckboxes();
         clickSaveButton();

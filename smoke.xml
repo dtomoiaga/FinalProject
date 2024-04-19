@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Smoke tests">
+    <test name="Registration">
+        <classes>
+            <class name="tests.RegisterPageTest"/>
+        </classes>
+    </test>
+    <test name="Login">
+        <classes>
+            <class name="tests.LoginPageTest"/>
+        </classes>
+    </test>
+    <test name="Add to wishlist">
+        <classes>
+            <class name="tests.WishlistPageTest">
+                <methods>
+                    <include name="addToWishlistSignedIn"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="Add to cart">
+        <classes>
+            <class name="tests.ShoppingCartPageTest">
+                <methods>
+                    <include name="addProductToCart"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="Checkout">
+        <classes>
+            <class name="tests.CheckoutTest"/>
+        </classes>
+    </test>
+</suite>

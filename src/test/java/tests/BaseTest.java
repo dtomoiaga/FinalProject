@@ -57,8 +57,13 @@ public class BaseTest {
     }
 
     @AfterMethod
-    public void cleanupAfterTest() {
-        closeBrowserAtEnd();
+    public void cleanupAfterMethod() {
+        try {
+            closeBrowserAtEnd();
+        } catch (Exception e) {
+            System.out.println("An exception occurred during WebDriver cleanup:");
+            e.printStackTrace();
+        }
     }
 
     private void closeBrowserAtEnd() {
