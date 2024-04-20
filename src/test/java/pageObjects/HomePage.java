@@ -9,9 +9,9 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class HomePage extends BasePage {
     @FindBy(id = "_desktop_cart")
-    WebElement cartButton;
+    private WebElement cartButton;
     @FindBy(id = "_desktop_user_info")
-    WebElement signInButton;
+    private WebElement signInButton;
     @Getter
     @FindBy(xpath = "//*[@id=\"_desktop_user_info\"]/div/a[1]")
     WebElement signOutButton;

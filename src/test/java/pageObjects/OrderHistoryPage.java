@@ -10,9 +10,9 @@ public class OrderHistoryPage extends BasePage{
 
     // Locators
     @FindBy(xpath = "//*[@id=\"content\"]/table/tbody/tr/td[6]/a[1]")
-    WebElement orderDetailsButton;
+    private WebElement orderDetailsButton;
     @FindBy(xpath = "//*[@id=\"content\"]/table/tbody/tr/td[6]/a[2]")
-    WebElement reorderButton;
+    private WebElement reorderButton;
     @FindBy(xpath = "//*[@id=\"content\"]/table")
     public WebElement orderList;
 

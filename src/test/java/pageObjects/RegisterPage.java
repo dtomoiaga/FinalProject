@@ -12,9 +12,9 @@ public class RegisterPage extends BasePage {
 
     // Locators
     @FindBy(id = "field-firstname")
-    WebElement firstNameField;
+    private WebElement firstNameField;
     @FindBy(id = "field-lastname")
-    WebElement lastNameField;
+    private WebElement lastNameField;
     @FindBy(id = "field-id_gender-1")
     WebElement mrRadioButton;
     @FindBy(css = "#customer-form > footer > button")

@@ -8,9 +8,9 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class AddToCartPopUp extends BasePage{
     @FindBy(xpath = "//*[@id=\"blockcart-modal\"]/div/div/div[2]/div/div[2]/div/div/button")
-    WebElement continueShoppingButton;
+    private WebElement continueShoppingButton;
     @FindBy(xpath = "/html/body/div[1]/div/div/div[2]/div/div[2]/div/div/a")
-    WebElement proceedToCheckoutButton;
+    private WebElement proceedToCheckoutButton;
 
 
     // Constructor

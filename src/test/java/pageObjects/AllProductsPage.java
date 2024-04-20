@@ -10,9 +10,9 @@ public class AllProductsPage extends BasePage {
 
     // Locators
     @FindBy(xpath = "/html/body/main/section/div/div/div[1]/div[4]/div[2]/section[1]/ul/li[1]/label/a")
-    WebElement filterByAccessories;
+    private WebElement filterByAccessories;
     @FindBy(xpath = "/html/body/main/section/div/div/div[1]/div[4]/div[2]/section[1]/ul/li[2]/label/a")
-    WebElement filterByArt;
+    private WebElement filterByArt;
     @FindBy(xpath = "/html/body/main/section/div/div/div[1]/div[4]/div[2]/section[1]/ul/li[3]/label/a")
     WebElement filterByClothes;
     @FindBy(xpath = "/html/body/main/section/div/div/div[1]/div[4]/div[2]/section[2]/ul/li[2]/label/a")
@@ -25,7 +25,6 @@ public class AllProductsPage extends BasePage {
     WebElement accessoriesFilterEnabled;
     @FindBy(xpath = "/html/body/main/section/div/div/div[2]/section/section/div[2]/section/ul/li")
     WebElement artFilterEnabled;
-
     @FindBy(xpath = "/html/body/main/section/div/div/div[2]/section/section/div[2]/section/ul/li")
     WebElement clothesFilterEnabled;
 

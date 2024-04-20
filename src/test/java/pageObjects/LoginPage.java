@@ -10,9 +10,9 @@ public class LoginPage extends BasePage {
 
     // Locators
     @FindBy(className = "no-account")
-    WebElement createAccountButton;
+    private WebElement createAccountButton;
     @FindBy(id = "submit-login")
-    WebElement signInButton;
+    private WebElement signInButton;
     @FindBy(id= "field-email")
     WebElement emailField;
     @FindBy(id= "field-password")

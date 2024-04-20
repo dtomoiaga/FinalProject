@@ -8,9 +8,9 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class ProductPage extends BasePage {
     @FindBy(xpath = "//*[@id=\"add-to-cart-or-refresh\"]/div[2]/div/div[2]/button")
-    WebElement productCartButton;
+    private WebElement productCartButton;
     @FindBy(xpath = "//*[@id=\"main\"]/div[1]/div[2]/h1")
-    WebElement productTitle;
+    private WebElement productTitle;
 
     // Constructor
     public ProductPage(WebDriver driver) {

@@ -11,9 +11,9 @@ public class WishlistPage extends BasePage{
 
     // Locators
    @FindBy(xpath = "//*[@id=\"main\"]/div[1]/div/a")
-    WebElement createNewListButton;
+   private WebElement createNewListButton;
    @FindBy(xpath = "//*[@id=\"content\"]/div/ul/li/a/p")
-   WebElement defaultWishlist;
+   private WebElement defaultWishlist;
    @FindBy(xpath = "/html/body/main/footer/div[2]/div/div[1]/div[6]/div[1]/div/div/div[2]/div/input")
    WebElement wishlistNameTextBox;
 

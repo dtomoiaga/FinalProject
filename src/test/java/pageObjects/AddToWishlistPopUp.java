@@ -8,9 +8,9 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class AddToWishlistPopUp extends BasePage{
     @FindBy(xpath = "//*[@id=\"footer\"]/div[2]/div/div[1]/div[4]/div[1]/div/div/div[1]/h5")
-    WebElement wishlistPopUpTitle;
+    private WebElement wishlistPopUpTitle;
     @FindBy(xpath = "//*[@id=\"footer\"]/div[2]/div/div[1]/div[4]/div[1]/div/div/div[3]/a")
-    WebElement createNewListButton;
+    private WebElement createNewListButton;
     @FindBy(xpath = "//*[@id=\"footer\"]/div[2]/div/div[1]/div[4]/div[1]/div/div/div[2]/div/ul/li/p")
     WebElement myWishlistButton;
 

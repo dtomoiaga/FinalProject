@@ -8,9 +8,9 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class SignInPopUp extends BasePage{
     @FindBy(xpath = "//*[@id=\"footer\"]/div[2]/div/div[1]/div[7]/div[1]/div/div/div[1]/h5")
-    WebElement signInPopUp;
+    private WebElement signInPopUp;
     @FindBy(xpath = "//*[@id=\"footer\"]/div[2]/div/div[1]/div[7]/div[1]/div/div/div[3]/button")
-    WebElement signInPopUpCancelButton;
+    private WebElement signInPopUpCancelButton;
 
 
     public SignInPopUp(WebDriver driver) {

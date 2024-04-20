@@ -10,9 +10,9 @@ public class ShoppingCartPage extends BasePage {
 
     // Locators
     @FindBy(xpath = "//*[@id=\"main\"]/div/div[2]/div[1]/div[2]/div/a")
-    WebElement proceedToCheckoutButton;
+    private WebElement proceedToCheckoutButton;
     @FindBy(xpath = "//*[@id=\"main\"]/div/div[1]/div/div[1]/h1")
-    WebElement shoppingCartTitle;
+    private WebElement shoppingCartTitle;
     @FindBy(xpath = "//*[@id=\"main\"]/div/div[1]/div/div[2]/ul/li/div/div[2]/div[1]/a")
     WebElement productInCart;
 
